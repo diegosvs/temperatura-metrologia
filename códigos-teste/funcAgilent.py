@@ -1,48 +1,32 @@
-import visa,time
+import visa
+from PyQt5 import QtCore, QtGui
+import time, csv, os, _thread as t
 
 def conectarMultimetroAgilent():
 
     portas_conectadas=visa.ResourceManager() #instancia a classe VISA
 
     instrumentos_conectados=portas_conectadas.list_resources()
-
-    global multimetro
+    print(instrumentos_conectados)
+    
+    global multimetro,b
 
     try:
         
-        multimetro=portas_conectadas.open_resource(str(instrumentos_conectados[0])) #conecta o multimetro agilent U3606A pela GPIB
-
-        return ("instrumento conectado")
+        multimetro=portas_conectadas.open_resource('GPIB0::22::INSTR') #conecta o multimetro agilent U3606A pela GPIB
 
         #print(multimetro.query("*IDN?")) #pede a identificacao do multimetro e imprime na tela
-
-
-        '''CONFIGURAÇÃO INICIAL PADRÃO'''
-        multimetro.write("CONF")
-        multimetro.write("SOUR:VOLT:RANG 30")
-        multimetro.write("INIT:CONT ON")
-        multimetro.write("OUTP OFF")
+        #multimetro.write("TERM FRONT")
+        b=multimetro.query('DCV')
+        #multimetro.write("END")        
+        return ("instrumento conectado",b)
 
     except:
 
         return ("falha na conexão")
     
 
-def fonte(valor_tensao):    
 
-    try:        
-        multimetro.write("VOLT ", valor_tensao)
-        time.sleep(1)
-        multimetro.write("OUTP ON")
-    except:
-        pass
-        
-
-       
-def desconectarMultimetroAgilent():
-
-    multimetro.close()
-    print("desconectado")
 
 def aquisitarMultimetroAgilent():
 
@@ -52,5 +36,5 @@ def aquisitarMultimetroAgilent():
         return ("Erro na aquisição")
        
     
-            
+print(conectarMultimetroAgilent())         
     
