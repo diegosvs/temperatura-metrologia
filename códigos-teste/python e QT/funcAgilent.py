@@ -13,12 +13,14 @@ def conectarMultimetroAgilent():
 
     try:
         
-        multimetro=portas_conectadas.open_resource('GPIB0::22::INSTR') #conecta o multimetro agilent U3606A pela GPIB
+        multimetro=portas_conectadas.open_resource(instrumentos__conectados[0]) #conecta o multimetro agilent U3606A pela GPIB
 
         #print(multimetro.query("*IDN?")) #pede a identificacao do multimetro e imprime na tela
-        #multimetro.write("TERM FRONT")
-        b=multimetro.query('DCV')
-        #multimetro.write("END")        
+        #multimetro.write("F1")
+        #multimetro.write("SW0")
+        b=multimetro.query('*IDN?')
+        
+        
         return ("instrumento conectado",b)
 
     except:
