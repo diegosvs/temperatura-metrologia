@@ -1,2 +1,3 @@
 IOLibSuite_18_1_23218 - keysight
 driver GPIB
+NIVISA 18.5

@@ -17,7 +17,7 @@ def conectarMultimetroAgilent():
     try:
         
         #multimetro=portas_conectadas.open_resource(instrumentos__conectados[0]) #conecta o multimetro agilent U3606A pela GPIB
-        multimetro=portas_conectadas.open_resource('ASRL4::INSTR',
+        multimetro=portas_conectadas.open_resource('ASRL3::INSTR',
                                                    parity=constants.Parity.none,
                                                    data_bits=8,
                                                    baud_rate=9600,
@@ -26,8 +26,8 @@ def conectarMultimetroAgilent():
         #print(multimetro.query("*IDN?")) #pede a identificacao do multimetro e imprime na tela
         #multimetro.write("F1")
         #multimetro.write("SW0")
-        b=multimetro.query('*IDN?')
-        
+        b=multimetro.query('SOUR:SENS:DATA?')
+                
         
         return ("instrumento conectado",b)
 
