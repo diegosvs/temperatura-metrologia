@@ -11,6 +11,7 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="subvi&apos;s" Type="Folder">
+			<Item Name="ligar_forno(SubVI).vi" Type="VI" URL="../ligar_forno(SubVI).vi"/>
 			<Item Name="query_temperature(SubVI).vi" Type="VI" URL="../query_temperature(SubVI).vi"/>
 			<Item Name="write_temperature(SubVI).vi" Type="VI" URL="../write_temperature(SubVI).vi"/>
 		</Item>

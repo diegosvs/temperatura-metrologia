@@ -2,3 +2,7 @@ PROG:STAT [0(desligar)/1(ligar)] - liga e desliga forno
 SOUR:SPO [xxx] - seleciona a temperatura
 SOUR:SPO? verifica a temperatura selecionada
 SOUR:SENS:DATA? - mostra temperatura do visor
+
+EDITAR / ORGANIZAR SUBVI'S
+DESLIGAR FORNO QUANDO PRESSIONAR STOP
+CONDICIONAL DE ESTABILIZAÇÇÃO PARA AQUISICAO
