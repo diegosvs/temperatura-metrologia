@@ -1,0 +1,1106 @@
+[
+    {
+        "id": "4f392bc2.f69bd4",
+        "type": "tab",
+        "label": "dashboard_forno",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a47ba2a3.47e7d",
+        "type": "ui_switch",
+        "z": "4f392bc2.f69bd4",
+        "name": "ligarDesligarForno",
+        "label": "Ligar/Desligar forno",
+        "tooltip": "",
+        "group": "2b470e57.48a8a2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "PROG:STAT 1",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "PROG:STAT 0",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "a926e89d.6647c8"
+            ]
+        ]
+    },
+    {
+        "id": "a67a561a.1031f8",
+        "type": "ui_gauge",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "group": "2b470e57.48a8a2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura do Forno",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "20",
+        "max": "400",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 600,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "24567c4d.8abd34",
+        "type": "inject",
+        "z": "4f392bc2.f69bd4",
+        "name": "temperatura_do_forno",
+        "topic": "",
+        "payload": "SOUR:SENS:DATA?",
+        "payloadType": "str",
+        "repeat": "7",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "5eca69ba.6d3b78"
+            ]
+        ]
+    },
+    {
+        "id": "5eca69ba.6d3b78",
+        "type": "serial request",
+        "z": "4f392bc2.f69bd4",
+        "name": "serial_forno",
+        "serial": "c15ac34a.884f1",
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "b96b4588.356f08",
+                "a67a561a.1031f8"
+            ]
+        ]
+    },
+    {
+        "id": "b96b4588.356f08",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 570,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "a926e89d.6647c8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 330,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "2daf1baf.0fc104",
+        "type": "ui_gauge",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "group": "2b470e57.48a8a2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura de Patamar",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": "20",
+        "max": "400",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 610,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "6614afeb.419e7",
+        "type": "inject",
+        "z": "4f392bc2.f69bd4",
+        "name": "temperatura_de_patamar",
+        "topic": "",
+        "payload": "SOUR:SPO?",
+        "payloadType": "str",
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "aede85cb.1b4a08"
+            ]
+        ]
+    },
+    {
+        "id": "aede85cb.1b4a08",
+        "type": "serial request",
+        "z": "4f392bc2.f69bd4",
+        "name": "serial_forno",
+        "serial": "c15ac34a.884f1",
+        "x": 370,
+        "y": 180,
+        "wires": [
+            [
+                "936f48b7.b69e68",
+                "2daf1baf.0fc104"
+            ]
+        ]
+    },
+    {
+        "id": "936f48b7.b69e68",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 570,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f0a38ad4.956b68",
+        "type": "serial request",
+        "z": "4f392bc2.f69bd4",
+        "name": "serial_forno",
+        "serial": "c15ac34a.884f1",
+        "x": 350,
+        "y": 280,
+        "wires": [
+            [
+                "cf56d7fd.392598",
+                "6a3e1757.c63f88"
+            ]
+        ]
+    },
+    {
+        "id": "ca951667.a83bc8",
+        "type": "inject",
+        "z": "4f392bc2.f69bd4",
+        "name": "estabilidade",
+        "topic": "",
+        "payload": "SOUR:STAB:TEST?",
+        "payloadType": "str",
+        "repeat": "17",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "f0a38ad4.956b68"
+            ]
+        ]
+    },
+    {
+        "id": "362918.c03286e8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 750,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "8fc9910a.42236",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 770,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "4d2c9bf6.af4934",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempoPatamar",
+        "func": "msg.payload = (\"PROG:SEQ:PAR DWELL, \"+msg.payload).toString();\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 840,
+        "wires": [
+            [
+                "362918.c03286e8",
+                "8fc9910a.42236"
+            ]
+        ]
+    },
+    {
+        "id": "ca8977aa.7e4f58",
+        "type": "ui_dropdown",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "pontos",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "127cbd7.73c0143",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "1",
+                "value": "PROG:SEQ:PAR POIN, 1",
+                "type": "str"
+            },
+            {
+                "label": "2",
+                "value": "PROG:SEQ:PAR POIN, 2",
+                "type": "str"
+            },
+            {
+                "label": "3",
+                "value": "PROG:SEQ:PAR POIN, 3",
+                "type": "str"
+            },
+            {
+                "label": "4",
+                "value": "PROG:SEQ:PAR POIN, 4",
+                "type": "str"
+            },
+            {
+                "label": "5",
+                "value": "PROG:SEQ:PAR POIN, 5",
+                "type": "str"
+            },
+            {
+                "label": "6",
+                "value": "PROG:SEQ:PAR POIN, 6",
+                "type": "str"
+            },
+            {
+                "label": "7",
+                "value": "PROG:SEQ:PAR POIN, 7",
+                "type": "str"
+            },
+            {
+                "label": "8",
+                "value": "PROG:SEQ:PAR POIN, 8",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 90,
+        "y": 800,
+        "wires": [
+            [
+                "b8508639.b26178",
+                "1b310c12.9762b4"
+            ]
+        ]
+    },
+    {
+        "id": "b8508639.b26178",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 250,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "957cdb31.e9a128",
+        "type": "ui_slider",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "tempo em patamar (min)",
+        "tooltip": "",
+        "group": "127cbd7.73c0143",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "min": "5",
+        "max": "100",
+        "step": 1,
+        "x": 330,
+        "y": 860,
+        "wires": [
+            [
+                "4d2c9bf6.af4934"
+            ]
+        ]
+    },
+    {
+        "id": "c73a2fe.10d31d",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "inserir temperatura de patamar",
+        "tooltip": "",
+        "group": "2b470e57.48a8a2",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 210,
+        "y": 660,
+        "wires": [
+            [
+                "9f399f76.3b57b"
+            ]
+        ]
+    },
+    {
+        "id": "9f399f76.3b57b",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "setTemperaturaPatamar",
+        "func": "msg.payload = \"SOUR:SPO \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 660,
+        "wires": [
+            [
+                "bd78b8f7.8fd1a8",
+                "34ced4a1.11c9fc"
+            ]
+        ]
+    },
+    {
+        "id": "bd78b8f7.8fd1a8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 710,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "34ced4a1.11c9fc",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 670,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "1b310c12.9762b4",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 270,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "bdfb39ff.9e3758",
+        "type": "ui_text",
+        "z": "4f392bc2.f69bd4",
+        "group": "2b470e57.48a8a2",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{value}}",
+        "layout": "col-center",
+        "x": 750,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "cf56d7fd.392598",
+        "type": "change",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "1",
+                "fromt": "str",
+                "to": "Patamar alcançado",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "0",
+                "fromt": "str",
+                "to": "..............",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 280,
+        "wires": [
+            [
+                "bdfb39ff.9e3758",
+                "67a6b6c3.0a77f8"
+            ]
+        ]
+    },
+    {
+        "id": "6a3e1757.c63f88",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 490,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "67a6b6c3.0a77f8",
+        "type": "debug",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 730,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "8714bafc.3f1c38",
+        "type": "ui_numeric",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "ciclos",
+        "tooltip": "",
+        "group": "127cbd7.73c0143",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "",
+        "format": "{{value}}",
+        "min": "1",
+        "max": "3",
+        "step": 1,
+        "x": 90,
+        "y": 920,
+        "wires": [
+            [
+                "e23b44af.fdf808"
+            ]
+        ]
+    },
+    {
+        "id": "e23b44af.fdf808",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "ciclosDeCalibração",
+        "func": "msg.payload = (\"PROG:SEQ:PAR CYCL, \"+msg.payload).toString();\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 920,
+        "wires": [
+            [
+                "8d262bd8.aa0e68"
+            ]
+        ]
+    },
+    {
+        "id": "8d262bd8.aa0e68",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 470,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "23f34d3d.f355d2",
+        "type": "ui_dropdown",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "2b470e57.48a8a2",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Modo manual",
+                "value": "PROG:TYPE ASW",
+                "type": "str"
+            },
+            {
+                "label": "Modo de rampa",
+                "value": "PROG:TYPE SEQ",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 100,
+        "y": 480,
+        "wires": [
+            [
+                "aab15635.cf9738"
+            ]
+        ]
+    },
+    {
+        "id": "aab15635.cf9738",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 610,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "707e6da0.0da664",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "1° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 180,
+        "y": 1020,
+        "wires": [
+            [
+                "6b97e3e9.f958bc"
+            ]
+        ]
+    },
+    {
+        "id": "6b97e3e9.f958bc",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO1, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1020,
+        "wires": [
+            [
+                "9883e42a.41a7c8"
+            ]
+        ]
+    },
+    {
+        "id": "9883e42a.41a7c8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 550,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "44f797bd.bef928",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "2° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 180,
+        "y": 1080,
+        "wires": [
+            [
+                "598a2d0c.a2d734"
+            ]
+        ]
+    },
+    {
+        "id": "598a2d0c.a2d734",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO2, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1080,
+        "wires": [
+            [
+                "61d3fef9.fac1c"
+            ]
+        ]
+    },
+    {
+        "id": "61d3fef9.fac1c",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 550,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "db2e7bc7.143988",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "3° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 180,
+        "y": 1120,
+        "wires": [
+            [
+                "bc31b40d.dca738"
+            ]
+        ]
+    },
+    {
+        "id": "bc31b40d.dca738",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO3, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1120,
+        "wires": [
+            [
+                "5fd18872.3d16a8"
+            ]
+        ]
+    },
+    {
+        "id": "5fd18872.3d16a8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 550,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "f8ae0689.6f7788",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "4° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 180,
+        "y": 1180,
+        "wires": [
+            [
+                "e46115fe.2558d8"
+            ]
+        ]
+    },
+    {
+        "id": "e46115fe.2558d8",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO4, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1180,
+        "wires": [
+            [
+                "f26cfbdd.5560e8"
+            ]
+        ]
+    },
+    {
+        "id": "f26cfbdd.5560e8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 550,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "4160625.33b069c",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "5° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 180,
+        "y": 1260,
+        "wires": [
+            [
+                "b4aff285.f6389"
+            ]
+        ]
+    },
+    {
+        "id": "b4aff285.f6389",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO5, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1260,
+        "wires": [
+            [
+                "420231e6.35383"
+            ]
+        ]
+    },
+    {
+        "id": "420231e6.35383",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 550,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "9aa7e32f.9edc1",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "6° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 180,
+        "y": 1320,
+        "wires": [
+            [
+                "a263cc04.99ef2"
+            ]
+        ]
+    },
+    {
+        "id": "a263cc04.99ef2",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO6, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1320,
+        "wires": [
+            [
+                "3a28fa06.9f69c6"
+            ]
+        ]
+    },
+    {
+        "id": "3a28fa06.9f69c6",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 550,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "790e4fc3.115d8",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "7° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 200,
+        "y": 1400,
+        "wires": [
+            [
+                "976833a9.05e79"
+            ]
+        ]
+    },
+    {
+        "id": "976833a9.05e79",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO7, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 1400,
+        "wires": [
+            [
+                "f6d68031.6a401"
+            ]
+        ]
+    },
+    {
+        "id": "f6d68031.6a401",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 570,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "e9936110.72317",
+        "type": "ui_text_input",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "label": "8° Ponto",
+        "tooltip": "",
+        "group": "aeca8de6.0a37f",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "",
+        "x": 200,
+        "y": 1460,
+        "wires": [
+            [
+                "f4c305d7.1913c8"
+            ]
+        ]
+    },
+    {
+        "id": "f4c305d7.1913c8",
+        "type": "function",
+        "z": "4f392bc2.f69bd4",
+        "name": "tempRampa",
+        "func": "msg.payload = \"PROG:SEQ:PAR SPO8, \"+msg.payload;\n\nreturn msg;\n\n//var valor = msg.payload.value.toString();\n//return valor;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 390,
+        "y": 1460,
+        "wires": [
+            [
+                "a18d977a.1a6cb8"
+            ]
+        ]
+    },
+    {
+        "id": "a18d977a.1a6cb8",
+        "type": "serial out",
+        "z": "4f392bc2.f69bd4",
+        "name": "",
+        "serial": "c15ac34a.884f1",
+        "x": 570,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "2b470e57.48a8a2",
+        "type": "ui_group",
+        "z": "4f392bc2.f69bd4",
+        "name": "Executar",
+        "tab": "fbd71e77.59168",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c15ac34a.884f1",
+        "type": "serial-port",
+        "z": "4f392bc2.f69bd4",
+        "serialport": "COM1",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "\\n",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "127cbd7.73c0143",
+        "type": "ui_group",
+        "z": "4f392bc2.f69bd4",
+        "name": "Configurações de Patamar",
+        "tab": "edaf7e9.45e318",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "aeca8de6.0a37f",
+        "type": "ui_group",
+        "z": "4f392bc2.f69bd4",
+        "name": "Pontos de rampa",
+        "tab": "edaf7e9.45e318",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fbd71e77.59168",
+        "type": "ui_tab",
+        "z": "4f392bc2.f69bd4",
+        "name": "Iniciar",
+        "icon": "dashboard",
+        "order": 16,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "edaf7e9.45e318",
+        "type": "ui_tab",
+        "z": "4f392bc2.f69bd4",
+        "name": "Configurações",
+        "icon": "dashboard",
+        "order": 15,
+        "disabled": false,
+        "hidden": false
+    }
+]
