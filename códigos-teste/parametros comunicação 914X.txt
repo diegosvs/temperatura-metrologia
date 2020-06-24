@@ -1,9 +1,24 @@
-PROG:STAT [0(desligar)/1(ligar)] - liga e desliga forno
+
 SOUR:SPO [xxx] - seleciona a temperatura
 SOUR:SPO? verifica a temperatura selecionada
 SOUR:SENS:DATA? - mostra temperatura do visor
+SOUR:STAB:TEST? - RESTORNA ESTADO DA ESTABILIZACAO [0/1]
 
-CONDICIONAL DE ESTABILIZAÇÇÃO PARA AQUISICAO
-VI PARA VERIFICAR MODELO DO FORNO E CONDICIONAR SELEÇÃO DE TEMPERATURAS
+PROG:SEQ:PAR CYCL,[numero de ciclos]
+PROG:SEQ:PAR DWELL,[TEMP em patamar em MINUTOS]
+PROG:SEQ:PAR POIN,[NUMERO DE PONTOS de 1 - 8]
+PROG:SEQ:PAR SPO[numero ordinal do ponto],[temperatura]
+PROG:SEQ:PAR DIR,[0 PARA CRESCENTE, 1 PARA CRESCENTE DECRESCENTE]
+
+
+PROG:STAT [0(desligar)/1(ligar)] - liga e desliga forno
+PROG:TYPE SEQ - SELECIONA MODO RAMPA
+PROG:TYPE ASW - SELECIONA MODO MANUAL
+
+ler estabilizacao do forno
+condição de retorno para forno 9142
+programação de rampa em vários pontos
+leitura dos terminais do forno 9142
 CASO FALAHAR COMUNICAÇÃO - DESLIGAR FORNO
+
 
